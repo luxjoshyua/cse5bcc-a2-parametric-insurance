@@ -46,6 +46,7 @@ contract DroughtInsurance {
     /// @notice Policy records by identifier.
     mapping(uint256 => Policy) public policies;
 
+    /// @notice Emitted when the insurer creates a new policy.
     event PolicyCreated(
         uint256 indexed policyId,
         string region,
