@@ -3,6 +3,9 @@
   "rules": {
     "compiler-version": ["error", "^0.8.28"],
     "func-visibility": ["warn", { "ignoreConstructors": true }],
-    "not-rely-on-time": "off"
+    "not-rely-on-time": "off",
+    "gas-indexed-events": "off",
+    "gas-strict-inequalities": "off",
+    "immutable-vars-naming": "off"
   }
 }

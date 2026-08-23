@@ -15,6 +15,17 @@ This example project includes:
 
 ## Usage
 
+### Common commands
+
+```shell
+# Install dependencies
+pnpm install
+# Compile the contracts
+pnpm hardhat compile
+# Check the code formatting
+pnpm lint
+```
+
 ### Running Tests
 
 To run all the tests in the project, execute the following command:
