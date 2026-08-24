@@ -178,6 +178,9 @@ contract DroughtInsurance {
     }
 
     constructor(address _oracle, address _priceFeed) payable {
+        if (_oracle == address(0)) revert InvalidOracle();
+        if (_priceFeed == address(0)) revert InvalidOracle();
+
         insurer = msg.sender;
         oracle = _oracle;
         priceFeed = AggregatorV3Interface(_priceFeed);
@@ -251,9 +254,11 @@ contract DroughtInsurance {
      * @return Latest price, scaled by the feed's decimals (8 for ETH/USD).
      */
     function _latestEthUsdPrice() internal view returns (int256) {
-        (, int256 answer, , uint256 updatedAt, ) = priceFeed.latestRoundData();
+        (uint80 roundId, int256 answer, , uint256 updatedAt, uint80 answeredInRound) = priceFeed
+            .latestRoundData();
 
         if (answer <= 0) revert StalePriceFeed();
+        if (answeredInRound < roundId) revert StalePriceFeed();
         if (block.timestamp - updatedAt > 3 hours) revert StalePriceFeed();
 
         return answer;

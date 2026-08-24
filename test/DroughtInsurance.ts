@@ -533,4 +533,36 @@ describe("DroughtInsurance", () => {
         .withArgs(insurer.address, amount);
     });
   });
+
+  describe("constructor", () => {
+    it("reverts on a zero oracle address", async () => {
+      const mockFeed = await ethers.deployContract("MockV3Aggregator", [
+        ETH_USD,
+      ]);
+
+      await expect(
+        ethers.deployContract("DroughtInsurance", [
+          ethers.ZeroAddress,
+          await mockFeed.getAddress(),
+        ]),
+      ).to.be.revertedWithCustomError(
+        await ethers.getContractFactory("DroughtInsurance"),
+        "InvalidOracle",
+      );
+    });
+
+    it("reverts on a zero price feed address", async () => {
+      const [, oracle] = await ethers.getSigners();
+
+      await expect(
+        ethers.deployContract("DroughtInsurance", [
+          oracle.address,
+          ethers.ZeroAddress,
+        ]),
+      ).to.be.revertedWithCustomError(
+        await ethers.getContractFactory("DroughtInsurance"),
+        "InvalidOracle",
+      );
+    });
+  });
 });
