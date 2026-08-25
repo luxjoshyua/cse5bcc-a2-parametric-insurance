@@ -1,8 +1,12 @@
 import { network } from "hardhat";
 
 const { ethers } = await network.getOrCreate();
-const [signer] = await ethers.getSigners();
-const balance = await ethers.provider.getBalance(signer.address);
+const signers = await ethers.getSigners();
+const labels = ["insurer", "oracle", "farmer"];
 
-console.log("address:", signer.address);
-console.log("balance:", ethers.formatEther(balance), "ETH");
+for (const [i, signer] of signers.entries()) {
+  const balance = await ethers.provider.getBalance(signer.address);
+  console.log(
+    `${labels[i] ?? i}: ${signer.address} — ${ethers.formatEther(balance)} ETH`,
+  );
+}

@@ -1,9 +1,9 @@
-import type { HardhatUserConfig } from "hardhat/config"
-import hardhatToolboxMochaEthers from "@nomicfoundation/hardhat-toolbox-mocha-ethers"
-import hardhatVerify from "@nomicfoundation/hardhat-verify"
-import dotenv from "dotenv"
+import type { HardhatUserConfig } from "hardhat/config";
+import hardhatToolboxMochaEthers from "@nomicfoundation/hardhat-toolbox-mocha-ethers";
+import hardhatVerify from "@nomicfoundation/hardhat-verify";
+import dotenv from "dotenv";
 
-dotenv.config()
+dotenv.config();
 
 const config: HardhatUserConfig = {
   plugins: [hardhatToolboxMochaEthers, hardhatVerify],
@@ -17,7 +17,11 @@ const config: HardhatUserConfig = {
     sepolia: {
       type: "http",
       url: process.env.SEPOLIA_RPC_URL ?? "",
-      accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : [],
+      accounts: [
+        process.env.PRIVATE_KEY,
+        process.env.ORACLE_PRIVATE_KEY,
+        process.env.FARMER_PRIVATE_KEY,
+      ].filter(Boolean) as string[],
     },
   },
   verify: {
@@ -25,6 +29,6 @@ const config: HardhatUserConfig = {
       apiKey: process.env.ETHERSCAN_API_KEY ?? "",
     },
   },
-}
+};
 
-export default config
+export default config;
