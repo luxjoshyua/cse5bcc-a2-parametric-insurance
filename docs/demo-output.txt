@@ -1,24 +1,22 @@
-◇ injected env (5) from .env // tip: ⌁ auth for agents [www.vestauth.com]
-
 contract:  0x87801B3214c7C6e1E1990ceC4c9c5adAa3D1aE70
 insurer:   0xD2A992714617eD196d2dAe870Eb4c7f15a27512F
 oracle:    0x09b87f60d1E052a30D62037E6763a40ED2539a06
 farmer:    0xD2FAEBa1BefCc3Ab7a0beC6C063Ec330458B82a4
 
-1. createPolicy — id 2, region Wagga Wagga, threshold 200mm
-  tx: https://sepolia.etherscan.io/tx/0x5cd64ace122056e1f1896da99a99dd04a3cc05324cd30a99ebf254d94e060d58
+1. createPolicy — id 0, region Wagga Wagga, threshold 200mm
+  tx: https://sepolia.etherscan.io/tx/0xeafe738dcd538766464ed257cd9c8d1fbc3ecd1afef73741ec625b4ae5d742ac
 
 2. purchasePolicy — premium 0.001 ETH
-  tx: https://sepolia.etherscan.io/tx/0xb7767f8f51b36e9164140c4376c0e7f2b14d25017e969cafa24b23f3764b60fb
+  tx: https://sepolia.etherscan.io/tx/0x444b250e0f75579be73d6e98d3385e7b6ccefd443810597201e1b87d9b2bd84f
 
 3. reportRainfall — 150mm (threshold 200mm)
-  tx: https://sepolia.etherscan.io/tx/0x3f9b05ea915ab70b1bbfdc741abd3626f2fb62dff2ce8ddc6349fe30352c9c41
+  tx: https://sepolia.etherscan.io/tx/0x8c13b1af39ef793a6b3f8919402d8e8151594af992467a3d85f3f82efe50b2f7
 
 4. waiting for season end...
    132s remaining
    120s remaining
    108s remaining
-   84s remaining
+   96s remaining
    72s remaining
    60s remaining
    48s remaining
@@ -26,5 +24,4 @@ farmer:    0xD2FAEBa1BefCc3Ab7a0beC6C063Ec330458B82a4
    12s remaining
 
 5. settlePolicy — farmer received 0.005 ETH
-  tx: https://sepolia.etherscan.io/tx/0x5e46bc4be03268238b5e9b932baa467a7d2f42be1bdbe845e1353f2d55539968
-
+  tx: https://sepolia.etherscan.io/tx/0xa2d9ff7d06ffa0801f6dd2f3d449319b547e9bd5c668c705983865af02513a92
